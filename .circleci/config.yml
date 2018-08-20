@@ -2,8 +2,6 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-version: 2.1
-
 orbs:
   heroku:
     description: "Provides basic functionality for deploying to Heroku"
@@ -140,8 +138,8 @@ jobs:
       # run tests!
       - run: yarn test
 
+version: 2.1
 workflows:
-  version: 2
   build_deploy:
     jobs:
       - build
