@@ -12,9 +12,9 @@
 <h2>Database Results</h2>
 
 <ul>
-    <% results.forEach(function(r) { %>
-        <li><%= r.id %> - <%= r.name %></li>
-    <% }); %>
+	<% for(var i=0; i<results.rows.length; i++) {%>
+        <li><%= results.rows[i].id %> - <%= results.rows[i].name %></li>
+    <% } %>
 </ul>
 
 </div>
