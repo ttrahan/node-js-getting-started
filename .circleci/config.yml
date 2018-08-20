@@ -27,7 +27,7 @@ orbs:
                 else
                   echo "Heroku is already installed. No operation was performed."
                 fi
-      deploy:
+      deploy_to_heroku_command:
         parameters:
           app-name:
             description:
@@ -66,7 +66,7 @@ orbs:
                   git push https://heroku:<< parameters.api-key >>@git.heroku.com/<< parameters.app-name >>.git << parameters.branch >>
                 fi
     jobs:
-      deploy:
+      deploy_to_heroku_job:
         parameters:
           app-name:
             description:
@@ -104,7 +104,7 @@ orbs:
               steps:
                 - run: heroku maintenance:on --app << parameters.app-name >>
           - steps: << parameters.pre-deploy >>
-          - deploy:
+          - deploy_to_heroku_command:
               app-name: << parameters.app-name >>
           - steps: << parameters.post-deploy >>
           - when:
@@ -143,6 +143,6 @@ workflows:
   build_deploy:
     jobs:
       - build
-      - heroku/deploy:
+      - heroku/deploy_to_heroku_job:
           requires: 
             - build
