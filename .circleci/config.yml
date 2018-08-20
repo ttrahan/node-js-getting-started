@@ -100,6 +100,7 @@ orbs:
         executor: default
         steps:
           - install
+          - checkout
           - when:
               condition: << parameters.maintenance-mode >>
               steps:
