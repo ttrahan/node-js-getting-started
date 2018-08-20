@@ -61,10 +61,11 @@ orbs:
         steps:
           - run:
               name: Deploy branch to Heroku via git push
-              command: |
-                if [ "<< parameters.only-branch >>" == "" || "${CIRCLE_BRANCH}" == "<< parameters.only-branch >>" ]; then
-                  git push https://heroku:<< parameters.api-key >>@git.heroku.com/<< parameters.app-name >>.git << parameters.branch >>
-                fi
+              command: git push https://heroku:<< parameters.api-key >>@git.heroku.com/<< parameters.app-name >>.git << parameters.branch >>
+              # command: |
+              #   if [ "<< parameters.only-branch >>" == "" || "${CIRCLE_BRANCH}" == "<< parameters.only-branch >>" ]; then
+              #     git push https://heroku:<< parameters.api-key >>@git.heroku.com/<< parameters.app-name >>.git << parameters.branch >>
+              #   fi
     jobs:
       deploy_to_heroku_job:
         parameters:
@@ -99,6 +100,7 @@ orbs:
         steps:
           - install
           - checkout
+          - echo $CIRCLE_BRANCH
           - when:
               condition: << parameters.maintenance-mode >>
               steps:
