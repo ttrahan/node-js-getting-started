@@ -100,7 +100,7 @@ orbs:
         steps:
           - install
           - checkout
-          - echo $CIRCLE_BRANCH
+          - run: echo $CIRCLE_BRANCH
           - when:
               condition: << parameters.maintenance-mode >>
               steps:
