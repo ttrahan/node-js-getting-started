@@ -15,7 +15,7 @@ app
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
-  // .get('/cool', (req, res) => res.send(cool()))
+  .get('/cool', (req, res) => res.send(cool()))
   .get('/times', (req, res) => {
 	  let result = ''
 	  const times = process.env.TIMES || 5
