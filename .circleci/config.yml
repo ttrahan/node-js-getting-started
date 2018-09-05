@@ -32,8 +32,8 @@ jobs:
       # run tests!
       - run: yarn test
 
+version: 2.1
 workflows:
-  version: 2.1
   build_test:
     jobs:
       - build
