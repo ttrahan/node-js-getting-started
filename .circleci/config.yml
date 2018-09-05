@@ -42,12 +42,12 @@ workflows:
   install_cypress:
     working_directory: ~/repo
     jobs:
-      - cypress/install
+      - cypress/install:
           requires: 
             - build
   install_basepack:
     working_directory: ~/repo
     jobs:
-      - cypress/install_basepack
+      - cypress/install_basepack:
           requires: 
             - build
