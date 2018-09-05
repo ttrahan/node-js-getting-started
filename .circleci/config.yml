@@ -33,12 +33,12 @@ jobs:
 
 version: 2.1
 workflows:
-  cypress/install:
+  install_cypress:
     jobs:
-      - install
-  cypress/install:
+      - cypress/install
+  install_basepack:
     jobs:
-      - install_basepack
+      - cypress/install_basepack
   # build_deploy:
   #   jobs:
   #     - build
