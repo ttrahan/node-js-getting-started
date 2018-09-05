@@ -31,18 +31,23 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       # run tests!
       - run: yarn test
+      - run: npm install cypress
+      - run: cypress run
 
 version: 2.1
 workflows:
+  build:
+    jobs:
+      - build
   install_cypress:
+    working_directory: ~/repo
     jobs:
       - cypress/install
+        requires: 
+          - build
   install_basepack:
+    working_directory: ~/repo
     jobs:
       - cypress/install_basepack
-  # build_deploy:
-  #   jobs:
-  #     - build
-  #     - heroku/deploy_to_heroku_job:
-  #         requires: 
-  #           - build
+        requires: 
+          - build
