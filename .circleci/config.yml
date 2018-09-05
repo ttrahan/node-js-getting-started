@@ -36,16 +36,12 @@ jobs:
 
 version: 2.1
 workflows:
-  build:
+  build_test:
     jobs:
       - build
-  install_cypress:
-    jobs:
       - cypress/install:
           requires: 
             - build
-  install_basepack:
-    jobs:
       - cypress/install_basepack:
           requires: 
             - build
