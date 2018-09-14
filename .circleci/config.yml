@@ -40,6 +40,6 @@ workflows:
       - cypress/install:
           requires: 
             - build
-      - cypress/install_basepack:
+      - cypress/install_browser:
           requires: 
             - build
