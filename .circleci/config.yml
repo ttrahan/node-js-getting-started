@@ -5,7 +5,7 @@
 version: 2.1
 
 orbs:
-  aws-ecs: ttrahan/aws-ecr@dev:alpha
+  aws-ecr: ttrahan/aws-ecr@dev:alpha
 
 workflows:
   build_and_push_image:
