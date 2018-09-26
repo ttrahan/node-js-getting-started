@@ -11,6 +11,7 @@ workflows:
   build_and_push_image:
     jobs:
       - aws-ecr/build_and_push_image:
+          working_directory: $CIRCLE_WORKING_DIRECTORY
           context: ttrahan
           region: us-west-2
           account-url: 304170260410.dkr.ecr.us-west-2.amazonaws.com 
