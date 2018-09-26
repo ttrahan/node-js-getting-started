@@ -13,7 +13,6 @@ workflows:
       - aws-ecr/build_and_push_image:
           context: ttrahan
           region: us-west-2
-          build-command: make
           account-url: 304170260410.dkr.ecr.us-west-2.amazonaws.com 
           repo: ttrahan-test
           tag: orb.${CIRCLE_BUILD_NUM}
