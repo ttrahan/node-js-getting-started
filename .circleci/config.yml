@@ -2,44 +2,22 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-orbs:
-  cypress: ttrahan/cypress@dev:test
-
-jobs:
-  build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:10.8.0-stretch
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-    working_directory: ~/repo
-    steps:
-      - checkout
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-      - run: yarn install
-      - cypress/install
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-      # run tests!
-      - run: yarn test
-
 version: 2.1
+
+orbs:
+  aws-ecs: ttrahan/aws-ecr@dev:alpha
+
 workflows:
-  build_test:
+  build_and_push_image:
     jobs:
-      - build
-      - cypress/install:
+      - aws-ecr/build_and_push_image:
           requires: 
             - build
-      - cypress/install_browser:
-          requires: 
-            - build
+          context: ttrahan
+          region: us-west-2
+          build-command: make
+          account-url: 304170260410.dkr.ecr.us-west-2.amazonaws.com 
+          repo: ttrahan-test
+          tag: orb.${CIRCLE_BUILD_NUM}
+
+
