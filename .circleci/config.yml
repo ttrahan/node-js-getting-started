@@ -11,8 +11,6 @@ workflows:
   build_and_push_image:
     jobs:
       - aws-ecr/build_and_push_image:
-          requires: 
-            - build
           context: ttrahan
           region: us-west-2
           build-command: make
