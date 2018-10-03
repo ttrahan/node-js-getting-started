@@ -9,6 +9,7 @@ orbs:
 
 jobs:
   install:
+    executor: default
     steps:
       - gcp-cli/install
 
