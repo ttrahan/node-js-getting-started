@@ -7,10 +7,15 @@ version: 2.1
 orbs:
   gcp-cli: ttrahan/gcp-cli@dev:alpha
 
+jobs:
+  install:
+    steps:
+      - gcp-cli/install
+
 workflows:
   install_and_configure_gcloud:
     jobs:
-      - gcp-cli/install
+      - install
       # - gcp-cli/configure:
 
 
