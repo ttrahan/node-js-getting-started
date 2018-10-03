@@ -17,15 +17,6 @@ jobs:
           google-project-id: citric-biplane-94023
           google-compute-zone: us-west1-b
       - run: gcloud -v
-  install_with_google_executor:
-    executor: gcp-cli/google
-    steps:
-      # test orb commands
-      - gcp-cli/install
-      - gcp-cli/initialize:
-          google-project-id: citric-biplane-94023
-          google-compute-zone: us-west1-b
-      - run: gcloud -v
 
 workflows:
   install_and_initialize_gcloud:
@@ -33,10 +24,12 @@ workflows:
       # test orb commands
       - install:
           context: ttrahan
-      - install_with_google_executor:
-          context: ttrahan
       # test orb jobs
       - gcp-cli/install_and_initialize_cli:
+          context: ttrahan
+          google-project-id: citric-biplane-94023
+          google-compute-zone: us-west1-b
+      - gcp-cli/use_google_image_and_initialize_cli:
           context: ttrahan
           google-project-id: citric-biplane-94023
           google-compute-zone: us-west1-b
