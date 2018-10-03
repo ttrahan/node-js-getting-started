@@ -13,6 +13,7 @@ jobs:
     steps:
       - gcp-cli/install
       - gcp-cli/initialize
+          context: ttrahan
 
 workflows:
   install_and_configure_gcloud:
