@@ -18,10 +18,11 @@ jobs:
       - run: gcloud -v
 
 workflows:
-  install_and_configure_gcloud:
+  install_and_initialize_gcloud:
     jobs:
       - install:
           context: ttrahan
-      # - gcp-cli/configure:
-
-
+      - gcp-cli/install_and_initialize_gcloud:
+          context: ttrahan
+          google-project-id: citric-biplane-94023
+          google-compute-zone: us-west1-b
