@@ -10,10 +10,10 @@ orbs:
 jobs:
   install:
     executor: gcp-cli/default
+    context: ttrahan
     steps:
       - gcp-cli/install
       - gcp-cli/initialize:
-          context: ttrahan
           google-project-id: citric-biplane-94023
           google-compute-zone: us-west1-b
 
