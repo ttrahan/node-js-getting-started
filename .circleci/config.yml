@@ -12,7 +12,7 @@ jobs:
     executor: gcp-cli/default
     steps:
       - gcp-cli/install
-      - gcp-cli/configure
+      - gcp-cli/initialize
 
 workflows:
   install_and_configure_gcloud:
