@@ -5,7 +5,7 @@
 version: 2.1
 
 orbs:
-  aws-ecr: ttrahan/gcp-cli@dev:alpha
+  gcp-cli: ttrahan/gcp-cli@dev:alpha
 
 workflows:
   install_and_configure_gcloud:
