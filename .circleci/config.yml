@@ -15,6 +15,7 @@ jobs:
       - gcp-cli/initialize:
           google-project-id: citric-biplane-94023
           google-compute-zone: us-west1-b
+      - run: gcloud -v
 
 workflows:
   install_and_configure_gcloud:
