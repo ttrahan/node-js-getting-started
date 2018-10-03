@@ -5,16 +5,12 @@
 version: 2.1
 
 orbs:
-  aws-ecr: ttrahan/aws-ecr@dev:alpha
+  aws-ecr: ttrahan/gcp-cli@dev:alpha
 
 workflows:
-  build_and_push_image:
+  install_and_configure_gcloud:
     jobs:
-      - aws-ecr/build_and_push_image:
-          context: ttrahan
-          region: us-west-2
-          account-url: 304170260410.dkr.ecr.us-west-2.amazonaws.com 
-          repo: ttrahan-test
-          tag: orb.${CIRCLE_BUILD_NUM}
+      - gcp-cli/install
+      # - gcp-cli/configure:
 
 
