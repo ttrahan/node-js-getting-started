@@ -10,7 +10,6 @@ orbs:
 jobs:
   install:
     executor: gcp-cli/default
-    context: ttrahan
     steps:
       - gcp-cli/install
       - gcp-cli/initialize:
@@ -20,7 +19,8 @@ jobs:
 workflows:
   install_and_configure_gcloud:
     jobs:
-      - install
+      - install:
+          context: ttrahan
       # - gcp-cli/configure:
 
 
